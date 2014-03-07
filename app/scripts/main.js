@@ -4,13 +4,6 @@ var Phaser = Phaser || window.Phaser || null;
 
 var game = (function($, Phaser, screen) {
     var self = this;
-    self.responses = [
-    "You need to stop, look left, and look right!",
-    "You need to stop, look left, and look right!",
-    "Got a little too much speed there!",
-    "You'll have to stop sooner!",
-    "Drive slower!"
-    ];
 
 self.preload = function() {
     self.game.load.image('ship', 'images/ship.png');
