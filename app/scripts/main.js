@@ -2,7 +2,7 @@
 
 var Phaser = Phaser || window.Phaser || null;
 
-var game = (function(Phaser) {
+var game = (function($, Phaser, screen) {
     var self = this;
     self.responses = [
     "You need to stop, look left, and look right!",
@@ -57,15 +57,17 @@ self.render = function() {
 };
 
 self.go = function() {
+    var windowTop = $("#game-window").offset().top;
     self.game = new Phaser.Game(
-            580, 500,
+            (screen.width > 700 ? 700 : screen.width),
+            (screen.height > 500 + windowTop ? 500 : screen.height - windowTop),
             Phaser.AUTO,
             'game-window', 
             self);
 };
 
 return self;
-})(Phaser);
+})(jQuery, Phaser, screen);
 
 $(function() {
     game.go();
