@@ -1,9 +1,9 @@
-"user strict";
+"use strict";
 
 var Phaser = Phaser || window.Phaser || null;
 
 var game = (function($, Phaser, screen) {
-    var self = this;
+var self = this;
 
 self.preload = function() {
     self.game.load.image('ship', 'images/ship.png');
