@@ -1,64 +1,21 @@
 "use strict";
 
 var Phaser = Phaser || window.Phaser || null;
-
-var game = (function(Phaser) {
-    var self = this || {};
-
-    self.preload = function() {
-        self.game.load.image('ship', 'images/ship.png');
-    };
-
-    self.create = function() {
-        self.game.stage.backgroundColor= "#111116";
-        self.ship = self.game.add.sprite(
-            self.game.stage.bounds.width/2 - 100,
-            self.game.stage.bounds.height / 2,
-            'ship');
-        self.game.add.text(10,10,"Space Mayhem", {font:"bold 32px monospace", fill:"#fff"});
-        self.cursors = self.game.input.keyboard.createCursorKeys();
-    };
-
-    self.update = function() {
-        self.wobble(self.ship.body, self.game.stage.bounds.height / 2);
-        if (self.cursors.up.isDown) {
-        } else if (self.cursors.down.isDown) {
-        }
-        if (self.cursors.left.isDown) {
-            self.ship.body.acceleration.x = -20;
-        } else if (self.cursors.right.isDown) {
-            self.ship.body.acceleration.x = 20;
-        } else {
-            self.ship.body.acceleration.x = 0;
-        }
-    };
-
-    self.wobble = function(body, y) {
-        if (body.velocity.y > 0) {
-            if (body.y > y + 10) {
-                body.acceleration.y = -30;
-            }
-        } else if (body.y < y - 10) {
-            body.acceleration.y = 30;
-        } else if (body.acceleration.y == 0) {
-            body.acceleration.y = 30;
-        }
-    };
-
-    self.render = function() {
-    };
-
-    self.go = function(width, height) {
-        self.game = new Phaser.Game(
-            width, height,
-            Phaser.AUTO,
-            'game-window', 
-            self
-        );
-    };
-    return self;
-})(Phaser);
-
 window.onload = function() {
-    game.go(800, 480);
+    "use strict";
+    // Create game
+    var game = new Phaser.Game(
+        800, 480,
+        Phaser.AUTO,
+        'game-window', 
+        self
+    );
+
+    // Add all game states
+    game.state.add('Boot', SpaceGame.Boot);
+    game.state.add('Preload', SpaceGame.Preload);
+    game.state.add('MainMenu', SpaceGame.MainMenu);
+
+    // Start this game
+    game.state.start('Boot');
 };
