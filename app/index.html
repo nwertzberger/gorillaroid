@@ -18,7 +18,11 @@
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
+        <!-- build:js scripts/compat.js -->
+        <!-- bower:js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
     </head>
     <body>
@@ -28,7 +32,7 @@
         <div id="game-window"></div>
 
 
-        <!-- build:js scripts/vendor.js -->
+        <!-- build:js scripts/lib.js -->
         <!-- bower:js -->
         <script src="bower_components/phaser/phaser.js"></script>
         <!-- endbower -->
@@ -45,10 +49,18 @@
         </script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
+        <!-- Game Libraries -->
         <script src="scripts/SpaceGame.js"></script>
+
+        <!-- Game states -->
         <script src="scripts/SpaceGame/Boot.js"></script>
         <script src="scripts/SpaceGame/Preload.js"></script>
         <script src="scripts/SpaceGame/MainMenu.js"></script>
+        <script src="scripts/SpaceGame/GameOver.js"></script>
+
+        <!-- Add levels here -->
+
+        <!-- Initializer -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
