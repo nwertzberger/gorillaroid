@@ -15,6 +15,7 @@ window.onload = function() {
     game.state.add('Boot', SpaceGame.Boot);
     game.state.add('Preload', SpaceGame.Preload);
     game.state.add('MainMenu', SpaceGame.MainMenu);
+    game.state.add('GameOver', SpaceGame.GameOver);
 
     // Start this game
     game.state.start('Boot');

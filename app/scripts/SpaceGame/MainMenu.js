@@ -6,8 +6,6 @@ SpaceGame.MainMenu = function(game) {
     };
     self.create = function() {
         game.stage.backgroundColor= "#111116";
-        self.cursors = self.game.input.keyboard.createCursorKeys();
-
         self.ship = game.add.sprite(
             game.stage.bounds.width/2 - 100,
             game.stage.bounds.height / 2,
