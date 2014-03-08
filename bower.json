@@ -2,9 +2,7 @@
   "name": "gorillaroid",
   "private": true,
   "dependencies": {
-    "sass-bootstrap": "~3.0.0",
     "modernizr": "~2.6.2",
-    "jquery": "~1.10.2",
     "phaser": "~1.1.6"
   },
   "devDependencies": {}

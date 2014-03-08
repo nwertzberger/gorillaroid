@@ -2,7 +2,7 @@
 
 var Phaser = Phaser || window.Phaser || null;
 
-var game = (function($, Phaser, screen) {
+var game = (function(Phaser) {
     var self = this || {};
 
     self.preload = function() {
@@ -45,23 +45,20 @@ var game = (function($, Phaser, screen) {
         }
     };
 
-
     self.render = function() {
     };
 
-    self.go = function() {
-        var windowTop = $("#game-window").offset().top;
+    self.go = function(width, height) {
         self.game = new Phaser.Game(
-                (screen.width > 700 ? 700 : screen.width),
-                (screen.height > 500 + windowTop ? 500 : screen.height - windowTop),
-                Phaser.AUTO,
-                'game-window', 
-                self);
+            width, height,
+            Phaser.AUTO,
+            'game-window', 
+            self
+        );
     };
-
     return self;
-})(jQuery, Phaser, screen);
+})(Phaser);
 
-$(function() {
-    game.go();
-});
+window.onload = function() {
+    game.go(800, 480);
+};
