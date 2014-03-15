@@ -11,6 +11,7 @@ SpaceGame.MainMenu = function(game) {
             game.stage.bounds.height / 2,
             'ship'
         );
+        game.physics.enable(self.ship, Phaser.Physics.ARCADE);
 
         game.add.text(10,10,"Space Mayhem", {font:"bold 32px monospace", fill:"#fff"});
         self.cursors = game.input.keyboard.createCursorKeys();
