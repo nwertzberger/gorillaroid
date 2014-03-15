@@ -6,7 +6,7 @@ SpaceGame.Preload = function(game) {
         game.load.image('ship', 'images/ship.png');
     };
     self.create = function() {
-        game.state.start('MainMenu');
+        game.state.start(developingState || 'MainMenu');
     };
     self.update = function() {
         //  If you don't have any music in your game then put the game.state.start line into the create function and delete

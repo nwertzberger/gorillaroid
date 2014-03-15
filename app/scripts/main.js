@@ -1,5 +1,4 @@
 "use strict";
-
 var Phaser = Phaser || window.Phaser || null;
 window.onload = function() {
     "use strict";

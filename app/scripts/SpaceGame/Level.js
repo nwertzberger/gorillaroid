@@ -1,3 +1,4 @@
+// developingState = "Level";
 SpaceGame.Level = function(game) {
     "use strict";
     var self = this;
@@ -6,6 +7,7 @@ SpaceGame.Level = function(game) {
     };
 
     self.create = function() {
+        self.ship = game.add.sprite(50,50,'ship');
     };
 
     self.update = function() {
@@ -14,4 +16,4 @@ SpaceGame.Level = function(game) {
     self.render = function() {
     };
 
-}
+};
