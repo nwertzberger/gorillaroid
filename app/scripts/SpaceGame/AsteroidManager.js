@@ -16,19 +16,26 @@
                 'asteroid'
             );
             asteroid.scale = {
-                x: cfg.scale,
-                y: cfg.scale
+                x: cfg.inertia * .707,
+                y: cfg.inertia * .707
             };
             asteroid.anchor.setTo(.5,.5);
             game.physics.enable(asteroid);
             asteroid.body.allowRotation = true;
             asteroid.body.angularVelocity = cfg.r;
-            asteroid.body.inertia = 1.0 * cfg.scale * cfg.scale;
-            asteroid.body.bounce = {x: 1.0, y : 1.0};
+            asteroid.body.inertia = cfg.inertia;
             asteroid.body.velocity = {
                 x: cfg.vx,
                 y: cfg.vy
             };
+            asteroid.body.collideWorldBounds = true;
+            asteroid.body.bounce = {x: 1.0, y : 1.0};
+            asteroid.body.setSize(
+                asteroid.width / 3,
+                asteroid.height / 3,
+                asteroid.width / 3,
+                asteroid.height / 3
+            );
         };
         self.update = function() {
             asteroids.forEach(self.wrapAtBounds);
@@ -58,31 +65,38 @@
         };
 
         self.split = function(asteroid1, asteroid2) {
-            self.processAsteroid(asteroid1, asteroid2);
-            self.processAsteroid(asteroid2, asteroid1);
-            asteroid1.exists = false;
-            asteroid2.exists = false;
+            var destroyAsteroid = Math.random() > 0.6;
+            if (destroyAsteroid) {
+                self.processAsteroid(asteroid1, asteroid2);
+                asteroid1.exists = false;
+            }
+            var destroyAsteroid = Math.random() > 0.6;
+            if (destroyAsteroid) {
+                self.processAsteroid(asteroid2, asteroid1);
+                asteroid2.exists = false;
+            }
+            return true;
         };
 
         self.processAsteroid = function(asteroid, object) {
-            if (asteroid.scale.x <= 0.5) {
+            if (asteroid.body.inertia <= 0.5) {
                 return;
             }
             self.addAsteroid({
-                x: asteroid.body.x,
-                y: asteroid.body.y,
-                vx: -asteroid.body.velocity.y,
-                vy: -asteroid.body.velocity.x,
+                x: asteroid.body.x + asteroid.body.halfWidth - 1,
+                y: asteroid.body.y - 1,
+                vx: asteroid.body.velocity.x - 15,
+                vy: asteroid.body.velocity.y - 15,
                 r: asteroid.body.angularVelocity,
-                scale: asteroid.scale.x / 2
+                inertia: asteroid.body.inertia / 2
             });
             self.addAsteroid({
-                x: asteroid.body.x,
-                y: asteroid.body.y,
-                vx: object.body.velocity.x * 2,
-                vy: object.body.velocity.y * 2,
+                x: asteroid.body.x + asteroid.body.halfWidth + 1,
+                y: asteroid.body.y + asteroid.body.height + 1,
+                vx: asteroid.body.velocity.x + 15,
+                vy: asteroid.body.velocity.y + 15,
                 r: asteroid.body.angularVelocity,
-                scale: asteroid.scale.x / 2
+                inertia: asteroid.body.inertia / 2
             });
         };
         self.init();
