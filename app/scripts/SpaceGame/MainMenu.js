@@ -1,11 +1,11 @@
 SpaceGame.MainMenu = function(game) {
-    "use strict";
+    'use strict';
     var self = this;
 
     self.preload = function() {
     };
     self.create = function() {
-        game.stage.backgroundColor= "#111116";
+        game.stage.backgroundColor= '#111116';
         self.ship = game.add.sprite(
             game.stage.bounds.width/2 - 100,
             game.stage.bounds.height / 2,
@@ -13,7 +13,7 @@ SpaceGame.MainMenu = function(game) {
         );
         game.physics.enable(self.ship, Phaser.Physics.ARCADE);
 
-        game.add.text(10,10,"Space Mayhem", {font:"bold 32px monospace", fill:"#fff"});
+        game.add.text(10,10,'Space Mayhem', {font:'bold 32px monospace', fill:'#fff'});
         self.cursors = game.input.keyboard.createCursorKeys();
     };
     self.update = function() {

@@ -1,12 +1,12 @@
 SpaceGame.Boot = function(game) {
-    "use strict";
+    'use strict';
     var self = this;
 
     self.preload = function() {
     };
     self.create = function() {
-        game.stage.backgroundColor= "#111116";
-        game.add.text(10,10,"Space Mayhem: Loading...", {font:"bold 32px monospace", fill:"#fff"});
+        game.stage.backgroundColor= '#111116';
+        game.add.text(10,10, 'Space Mayhem: Loading...', {font:'bold 32px monospace', fill:'#fff'});
         game.state.start('Preload');
     };
     self.update = function() {

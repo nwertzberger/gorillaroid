@@ -1,3 +1,4 @@
+/*jshint node:true*/
 // Generated on 2014-03-07 using generator-webapp 0.4.7
 'use strict';
 

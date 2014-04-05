@@ -1,13 +1,12 @@
-"use strict";
 var Phaser = Phaser || window.Phaser || null;
 window.onload = function() {
-    "use strict";
+    'use strict';
     // Create game
     var game = new Phaser.Game(
         800, 480,
         Phaser.AUTO,
-        'game-window', 
-        self
+        'game-window',
+        this
     );
 
     // Add all game states

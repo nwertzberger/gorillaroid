@@ -56,6 +56,7 @@ SpaceGame.Hud = function(game, ship) {
     var phaser = game.add.text(10 + 2*width / 3, bottom, "Phasers:", style);
     start = phaser.width + phaser.x + spacer;
     addPointBar(start, bottom, 3);
-    
-    var score = game.add.text( 10 + 2*width / 3, 5, "Score: 0", style);
+
+    // var score =
+    game.add.text( 10 + 2*width / 3, 5, "Score: 0", style);
 };

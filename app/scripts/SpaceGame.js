@@ -1,1 +1,1 @@
-SpaceGame = {};
+window.SpaceGame = {};
