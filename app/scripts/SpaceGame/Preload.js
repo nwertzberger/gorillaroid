@@ -4,6 +4,7 @@ SpaceGame.Preload = function(game) {
 
     self.preload = function() {
         game.load.image('ship', 'images/ship.png');
+        game.load.image('asteroid', 'images/asteroid.png');
     };
     self.create = function() {
         game.state.start(window.developingState || 'MainMenu');
