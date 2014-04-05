@@ -28,7 +28,6 @@
                 x: cfg.vx,
                 y: cfg.vy
             };
-            asteroid.body.collideWorldBounds = true;
             asteroid.body.bounce = {x: 1.0, y : 1.0};
             asteroid.body.setSize(
                 asteroid.width / 3,
@@ -82,21 +81,23 @@
             if (asteroid.body.inertia <= 0.5) {
                 return;
             }
+
+
             self.addAsteroid({
-                x: asteroid.body.x + asteroid.body.halfWidth - 1,
-                y: asteroid.body.y - 1,
-                vx: asteroid.body.velocity.x - 15,
-                vy: asteroid.body.velocity.y - 15,
+                x: asteroid.x + asteroid.width / 4,
+                y: asteroid.y,
+                vx: asteroid.body.velocity.x,
+                vy: asteroid.body.velocity.y,
                 r: asteroid.body.angularVelocity,
-                inertia: asteroid.body.inertia / 2
+                inertia: asteroid.body.inertia * .707
             });
             self.addAsteroid({
-                x: asteroid.body.x + asteroid.body.halfWidth + 1,
-                y: asteroid.body.y + asteroid.body.height + 1,
-                vx: asteroid.body.velocity.x + 15,
-                vy: asteroid.body.velocity.y + 15,
-                r: asteroid.body.angularVelocity,
-                inertia: asteroid.body.inertia / 2
+                x: asteroid.x + asteroid.width / 4,
+                y: asteroid.y + asteroid.height,
+                vx: asteroid.body.velocity.x,
+                vy: asteroid.body.velocity.y,
+                r: asteroid.body.angularVelocity * Math.random() * 2,
+                inertia: asteroid.body.inertia *.707
             });
         };
         self.init();
